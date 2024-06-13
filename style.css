@@ -1,0 +1,32 @@
+/* body{
+  background-color:#fff;
+} */
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.text-container {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+
+
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+
+  position: relative;
+
+  z-index: 420;
+  color: #fff;
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+
+}
