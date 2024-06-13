@@ -78,8 +78,8 @@ function touchMoved() {
     touchDist = newTouchDist;
   } else if (touches.length === 1) {
     // Rotate
-    angleY += (touches[0].x - lastTouchX) * 0.5;
-    angleX += (touches[0].y - lastTouchY) * 0.5;
+    angleY += (touches[0].x - lastTouchX) * 0.2;
+    angleX += (touches[0].y - lastTouchY) * 0.2;
     lastTouchX = touches[0].x;
     lastTouchY = touches[0].y;
   }
