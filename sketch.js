@@ -1,4 +1,9 @@
-
+let angleX = 0;
+let angleY = 0;
+let lastTouchX = 0;
+let lastTouchY = 0;
+let touchDist = 0;
+let zoomFactor = 1;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -16,7 +21,10 @@ function windowResized() {
 
 function draw() {
   background(230, 50, 15);
-  orbitControl(4, 4);//3D mouse control
+  // orbitControl(4, 4);//3D mouse control
+  rotateX(angleX);
+  rotateY(angleY);
+  scale(zoomFactor);
 
 
   rotateX(-30);
@@ -49,6 +57,33 @@ function dahlia() {
     }
     endShape();
   }
+}
+
+function touchStarted() {
+  if (touches.length === 2) {
+    // Calculate the initial distance between two touches for zooming
+    touchDist = dist(touches[0].x, touches[0].y, touches[1].x, touches[1].y);
+  } else {
+    lastTouchX = touches[0].x;
+    lastTouchY = touches[0].y;
+  }
+  return false;
+}
+
+function touchMoved() {
+  if (touches.length === 2) {
+    // Pinch zoom
+    let newTouchDist = dist(touches[0].x, touches[0].y, touches[1].x, touches[1].y);
+    zoomFactor *= newTouchDist / touchDist;
+    touchDist = newTouchDist;
+  } else if (touches.length === 1) {
+    // Rotate
+    angleY += (touches[0].x - lastTouchX) * 0.5;
+    angleX += (touches[0].y - lastTouchY) * 0.5;
+    lastTouchX = touches[0].x;
+    lastTouchY = touches[0].y;
+  }
+  return false;
 }
 
 
