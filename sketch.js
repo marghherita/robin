@@ -21,7 +21,7 @@ function draw() {
 
   rotateX(-30);
 
-  // zinnia();
+  //zinnia();
   //camellia();
   //lotus();
   dahlia();
@@ -56,7 +56,7 @@ function dahlia() {
 function camellia() {
   for (let r = 0; r <= 1; r += 0.02) {
     beginShape(POINTS);
-    stroke(335, -r * 5 + 10, r * 50 + 50);
+    stroke(20 - r * 20, 80 - r * 40, 60 + r * 40);
 
     for (let theta = 0; theta <= 180 * 20; theta += 1.5) {
       let phi = (180 / 2.5) * Math.exp(-theta / (16 * 180));
@@ -79,7 +79,7 @@ function camellia() {
 function rose() {
   for (let r = 0; r <= 1; r += 0.02) {
     beginShape(POINTS);
-    stroke(205, -r * 50 + 100, r * 50 + 50);
+    stroke(20 - r * 20, 80 - r * 40, 60 + r * 40);
     for (let theta = -2 * 180; theta <= 180 * 15; theta += 2) {
       let phi = (180 / 2) * Math.exp(-theta / (8 * 180));
       let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((3.6 * theta % 360) / 180), 2) - 1 / 4, 2);
@@ -99,7 +99,7 @@ function rose() {
 function zinnia() {
   for (let r = 0; r <= 1; r += 0.02) {
     beginShape(POINTS);
-    stroke(335, -r * 40 + 100, r * 50 + 50);
+    stroke(20 - r * 20, 80 - r * 40, 60 + r * 40);
     for (let theta = -2 * 180; theta <= 180 * 15; theta += 1.5) {
       let phi = (180 / 2) * Math.exp(-theta / (16 * 180));
       let petalCut = 1 - (1 / 2) * pow((5 / 4) * pow(1 - ((10.4 * theta % 360) / 180), 2) - 1 / 12, 2);
@@ -119,7 +119,7 @@ function zinnia() {
 function lotus() {
   for (let r = 0; r <= 1; r += 0.02) {
     beginShape(POINTS);
-    stroke(310, (r * 50 - 30) * 3 + 5, 100);
+    stroke(20 - r * 20, 80 - r * 40, 60 + r * 40);
     for (let theta = 0; theta <= 180 * 8; theta += 1.5) {
       let phi = (180 / 2.5) * Math.exp(-theta / (6.5 * 180));
       let petalCut = 0.5 + abs(asin(sin(2.25 * theta)) + 120 * sin(2.25 * theta)) / 360;
