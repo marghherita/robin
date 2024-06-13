@@ -4,6 +4,8 @@
 
 canvas {
   position: fixed !important;
+  z-index: 2;
+
 }
 
 
@@ -26,7 +28,7 @@ canvas {
 
   position: relative;
 
-  z-index: 420;
+  z-index: 1;
   color: #fff;
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
