@@ -1,3 +1,11 @@
+
+let angleX = 0;
+let angleY = 0;
+let lastTouchX = 0;
+let lastTouchY = 0;
+let touchDist = 0;
+let zoomFactor = 1;
+
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   colorMode(HSB);
@@ -15,6 +23,9 @@ function windowResized() {
 function draw() {
   background(230, 50, 15);
   orbitControl(4, 4);//3D mouse control
+  rotateX(angleX);
+  rotateY(angleY);
+  scale(zoomFactor);
 
   rotateX(-30);
 
@@ -26,6 +37,28 @@ function draw() {
 
 
 }
+
+
+function dahlia() {
+  for (let r = 0; r <= 1; r += 0.03) {
+    beginShape(POINTS);
+    stroke(20 - r * 20, 80 - r * 40, 60 + r * 40);
+    for (let theta = 0; theta <= 180 * 30; theta += 1.5) {
+      let phi = (180 / 1.75) * Math.exp(-theta / (11 * 180));
+      let petalCut = 0.6 + abs(asin(sin(4.75 * theta)) + 420 * sin(4.75 * theta)) / 2000;
+      let hangDown = 2.3 * pow(r, 2) * pow(0.9 * r - 1, 2) * sin(phi);
+
+      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {
+        let pX = 300 * (1 - theta / 20000) * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);
+        let pY = -300 * (1 - theta / 20000) * petalCut * (r * cos(phi) - hangDown * sin(phi));
+        let pZ = 300 * (1 - theta / 20000) * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);
+        vertex(pX, pY, pZ);
+      }
+    }
+    endShape();
+  }
+}
+
 
 
 function camellia() {
@@ -104,26 +137,6 @@ function lotus() {
         let pX = 300 * (1 - theta / 10000) * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);
         let pY = -300 * (1 - theta / 10000) * petalCut * (r * cos(phi) - hangDown * sin(phi));
         let pZ = 300 * (1 - theta / 10000) * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);
-        vertex(pX, pY, pZ);
-      }
-    }
-    endShape();
-  }
-}
-
-function dahlia() {
-  for (let r = 0; r <= 1; r += 0.03) {
-    beginShape(POINTS);
-    stroke(20 - r * 20, 80 - r * 40, 60 + r * 40);
-    for (let theta = 0; theta <= 180 * 30; theta += 1.5) {
-      let phi = (180 / 1.75) * Math.exp(-theta / (11 * 180));
-      let petalCut = 0.6 + abs(asin(sin(4.75 * theta)) + 420 * sin(4.75 * theta)) / 2000;
-      let hangDown = 2.3 * pow(r, 2) * pow(0.9 * r - 1, 2) * sin(phi);
-
-      if (0 < petalCut * (r * sin(phi) + hangDown * cos(phi))) {
-        let pX = 300 * (1 - theta / 20000) * petalCut * (r * sin(phi) + hangDown * cos(phi)) * sin(theta);
-        let pY = -300 * (1 - theta / 20000) * petalCut * (r * cos(phi) - hangDown * sin(phi));
-        let pZ = 300 * (1 - theta / 20000) * petalCut * (r * sin(phi) + hangDown * cos(phi)) * cos(theta);
         vertex(pX, pY, pZ);
       }
     }
